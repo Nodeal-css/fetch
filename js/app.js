@@ -1,4 +1,5 @@
 var save = document.querySelector("#submit");
+var openList = document.querySelector("#view-list");
 
 //synchronous
 
@@ -6,6 +7,9 @@ var save = document.querySelector("#submit");
 
 //async
 
+openList.addEventListener('click', async () => {
+	window.location.href = "./pages/books.html";
+});
 
 save.addEventListener('click', async () => {
 	//console.log('clicked');
@@ -22,12 +26,8 @@ save.addEventListener('click', async () => {
 		body: JSON.stringify({"title": title, "author": author, "genre": genre, "quantity": quantity, "price": price, })
 	});
 	const output = await res.text();
-	//const obj = await res.json();
-	var temp = output.replace(/:/g, ",");
-	var arr = eval(temp.substring(9, temp.length));
-	console.log(arr);
-	
-	//console.log(res.json());
+	var arr = JSON.parse(output.substring(9, output.length));
+	alert("message: " + arr["message"]);
 	clearInput();
 });
 

@@ -14,7 +14,7 @@ $sql = "INSERT INTO `book`(`title`, `author`, `genre`, `quantity`, `price`) VALU
 $con = open();
 $result = mysqli_query($con, $sql);
 if($result){
-	$arr = array('success',true,'message','book added');
+	$arr = array('success'=>true,'message'=>'book has been added');
 	echo( json_encode($arr));
 }else{
 	echo json_encode(['success', false, 'message', 'book not added']);
